@@ -1,7 +1,7 @@
 <template>
     <div class="hehe">
         <section v-for="car in carsData()" :key="car.name">
-        <card-comp :car="car">
+        <card-comp :car="car" currentView="car">
                 <template #cars>
                     <h2>{{car.make}}</h2>
                 </template>            
@@ -34,9 +34,10 @@ export default {
 .hehe{
     display: grid;
     grid-template-columns: repeat(5,1fr);
+    gap: 5%
 }
 section{
-    border: 3px black solid;
+    border: 1px black solid;
     border-radius: 10%;
     width: 200px;
     height: 200px;
