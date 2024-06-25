@@ -1,17 +1,17 @@
 <template>
-  <div>
+  <div class="hehe">
     <!-- Check if there are friends -->
     <template v-if="friendsData && friendsData.length">
       <!-- Iterate through the list of friends -->
-      <div v-for="friend in friendsData" :key="friend.id" :style="{ borderColor: friend.gender === 'Male' ? 'gold' : 'green', borderWidth: '2px', borderStyle: 'solid', padding: '10px', margin: '10px' }">
+      <div v-for="friend in friendsData" :key="friend.id" :style="{ borderColor: friend.gender === 'Male' ? 'gold' : 'green', borderWidth: '3px', borderStyle: 'solid'}">
         <h3>{{ friend.firstName }}</h3>
         <p>Contact: {{ friend.contactDetails }}</p>
       </div>
     </template>
     <template v-else>
       <!-- Display spinner if there are no friends -->
-      <div class="spinner">Loading...</div>
-    </template>
+      <div class="spinner">Loading...</div> 
+    </template> 
   </div>
 </template>
 
@@ -29,7 +29,9 @@ export default {
 </script>
 
 <style scoped>
-.spinner {
-  /* Style your spinner */
+.hehe{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 5%;
 }
 </style>

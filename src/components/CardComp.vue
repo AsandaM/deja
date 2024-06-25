@@ -3,47 +3,54 @@
 
       <!-- Display cars details here -->
       <template v-if="currentView === 'car'">
-      <div :style="{ backgroundColor: car.color, color: textColor, borderColor: borderColor, borderWidth: '1px', borderStyle: 'solid', borderRadius:'10%' }">
-       <slot name="cars"> </slot>
-       <p>Model: {{car.model}}</p>
-       <p>Year: {{car.year}}</p>
-       <p>Color: {{car.color}}</p>
-       <p>Price: {{car.price}}</p>
+      <div class="cars" :style="{ backgroundColor: car.color, color: car.color === 'Black' ? 'white' : 'black'}">
+        <slot name="cars"> </slot>
+        <p>Model: {{car.model}}</p>
+        <p>Year: {{car.year}}</p>
+        <p>Color: {{car.color}}</p>
+        <p>Price: {{car.price}}</p>
        </div>
        </template>
       
       
       <!-- Display gaming console details here -->
       <template v-else-if="currentView === 'gaming'">
+      <div class="games" :style="{backgroundImage: `url(${image})`}">
       <slot name="gaming"> </slot>
       <p>Manufacturer: {{gaming_console.manufacturer}}</p>
       <p>Release year: {{gaming_console.release_year}}</p>
       <p>Price: {{gaming_console.price}}</p>
       <p>Best selling game: {{gaming_console.best_selling_game}}</p>
+      </div>
     </template>
     </div>
 </template>
 <script>
 export default {
    props:['car', 'currentView', 'gaming_console'],
-   computed: {
-     textColor() {
-    // Check if the current view is 'car' and if the car object exists and has a color attribute
-    if (this.currentView === 'car' && this.car.color === 'black') {
-      return 'white'; 
-    }
-    return 'brown'; // Default text color
-  },
-  borderColor() {
-      if (this.currentView === 'car' && this.car.color === 'black') {
-        return 'white'
-      }
-      return 'black'; 
+   data(){
+    return{
+
+      image:"https://www.shutterstock.com/shutterstock/videos/3495669617/thumb/12.jpg?ip=x480"
     }
    }
     
 }
 </script>
-<style lang="">
-    
+<style scoped>
+   .cars{
+    border: 1px black solid;
+    border-radius: 10%;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+   } 
+   .games{
+    width: 300px;
+    border-radius: 10%;
+   }
+   p{
+    color: bisque;
+   }
+   
 </style>
